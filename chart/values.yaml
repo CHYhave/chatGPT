@@ -1,0 +1,12 @@
+deliveryMode: public
+
+image:
+  repository: docker.io/chyhave/chatgpt
+  tag: "latest"
+  pullPolicy: Always
+  secretName: csb-cr-secret
+# eureka 只支持单节点
+replicaCount: 1
+env:
+  serverPort: 80
+  otelExporterEndpoint: http://collector-collector:4317

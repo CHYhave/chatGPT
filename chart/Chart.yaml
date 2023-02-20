@@ -1,0 +1,4 @@
+apiVersion: v1
+description: chat-gpt
+name: chat-gpt
+version: 1.0.0

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-gpt
+  labels:
+    app: chat-gpt
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: chat-gpt
+  template:
+    metadata:
+      annotations:
+        networking.alibaba.com/ip-family: DualStack
+      labels:
+        app: chat-gpt
+    spec:
+      containers:
+        - name: chat-gpt
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http-server
+              containerPort: {{ .Values.env.serverPort }}
+          envFrom:
+            - configMapRef:
+                name: chat-gpt-env
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1G
+            limits:
+              cpu: 1
+              memory: 2G
+      imagePullSecrets:
+        - name: "{{ .Values.image.secretName }}"
