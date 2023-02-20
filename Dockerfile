@@ -1,5 +1,5 @@
-FROM reg.docker.alibaba-inc.com/cnstack/cnstack-java:1.0-beta
-MAINTAINER jingfeng.xjf <jingfeng.xjf@alibaba-inc.com>
+FROM docker.io/library/java:latest
+MAINTAINER haoyu.chy <949687815@qq.com>
 
 ADD bin /home/admin/bin
 
