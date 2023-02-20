@@ -119,4 +119,8 @@ public class MainController {
 //    }
 
 
+    @GetMapping("/checkpreload")
+    public String checkpreload() {
+        return "success";
+    }
 }
